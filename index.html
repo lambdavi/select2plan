@@ -166,127 +166,198 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+<section class="section hero" style="padding-bottom: .75rem; padding-top: 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-bottom: .75rem; padding-top: 1.5rem;">
+      <h3 class="title is-3">What can we learn from a video?</h3>
+      <p>
+        Different egocentric video tasks can provide <b>different, and possibly complementary, perspectives</b> on what the user is doing. 
+        For example, learning to recognise human actions can give clues as to which objects are being manipulated or what will happen next.
+      </p>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/what_can_we_learn.png" alt="" style="max-width: 768px; margin: auto;" />
+      </figure>
+      <h4 class="title is-4">How can we learn from these perspectives?</h4>
+      <p>
+        Different approaches can be used to learn from these tasks. 
+        <b>Single task</b> models learn unique weights for each task. 
+        <b>Multi-task learning</b> shares a common backbone among the different tasks, with small task-specific heads on top. 
+        <b>Task translation</b> is a more recent approach that learns to translate the contributions of different task to solve one of them.
+      </p>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/related.png" alt="" style="max-width: 768px; margin: auto;" />
+      </figure>
+      <p>
+        All these approaches have some limitations. 
+        For example, <b>multi-task learning</b> can share weights across different tasks, but it <b>does not explicitly model cross-task sinergies</b> and can lead to negative transfer between tasks.
+        <br>
+        Likewise, the <b>cross-task translation</b> mechanism proposed by EgoT2 combines perspectives from different tasks but it <b>needs to know all tasks before-hand</b> and requires separate models for each task.
+      </p>
+      <br>
+      <h4 class="title is-4">A new paradigm for Egocentric Video Understanding</h4>
+      <p>
+        We propose an approach for <b>egocentric video understanding</b> that focuses on <b>knowledge reuse</b> across different tasks. 
+        To do so, we adopt a graph-based shared model and the goal is to outperform single and multi-task baselines adapted to our scenario.
+      </p>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/paradigm.png" alt="" style="max-width: 768px; margin: auto;" />
+      </figure>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
+
+<section class="section hero" style="padding-bottom: .75rem; padding-top: 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-bottom: .75rem; padding-top: 1.5rem;">
+      <h3 class="title is-3">Proposed Architecture</h3>
+      <p>
+        Our approach is called <b>EgoPack</b> and is composed of two stages. 
+        In the first stage, a multi-task model is trained on a set of K known tasks. 
+        In the second stage, the model is fine-tuned on a novel task using egopack’s cross-task interaction mechanism
+      </p>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/method.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+      </figure>
+
+      <h4 class="title is-4">Step 1: MTL Pre-training step</h4>
+      <div class="columns is-vcentered is-flex-center is-multiline">
+        <div class="column is-half">
+          <div class="text-block">
+            <p>
+              To share the same model across different tasks, we propose to <b>model video as graphs</b> whose nodes correspond to temporal segments of the video, 
+              edges connect temporally close nodes and egocentric video tasks can be represented as different graph operations
+            </p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+            <img src="static/images/temp.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+          </figure>
+        </div>
+        <div class="column is-half">
+          <div class="text-block">
+            <p>
+              With this architecture, we can model <b>temporal reasoning</b> using a graph neural network 
+              that iteratively updates the nodes representations using <b>message passing</b>.
+              <br><br>
+              Finally, a set of <b>task-specific heads</b> project the nodes in the output space of each task.
+            </p>
+          </div>
+        </div>
+          <div class="column is-half">
+            <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+              <img src="static/images/mtl.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+            </figure>
+          </div>
+      </div>
 
 
+      <h4 class="title is-4">Step 2: Novel Task Learning</h2>
+        <div class="columns is-vcentered is-flex-center is-multiline">
+          <div class="column is-half">
+            <div class="text-block">
+              <p>
+                These heads model different and complementary perspectives on the content of the video. 
+                We can collect these perspectives in a set of action-wise <b>task-specific prototypes</b>.
+                <br><br>
+                We call these prototypes a <b>backpack of skills</b> and they represent a frozen snapshot of what the 
+                model has learnt in the pre-training phase.
+              </p>
+            </div>
+          </div>
+          <div class="column is-half">
+            <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+              <img src="static/images/egopack.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+            </figure>
+          </div>
+          <div class="column is-half">
+            <div class="text-block">
+              <p>
+                <ol>
+                  <li>
+                    When learning a novel task, we feed the temporal features through the 
+                    task-specific heads of the pre-training tasks.
+                  </li>
+                  <br>
+                  <li>
+                    These features act as queries to look for the closest matching prototypes 
+                    using k-NN in the features space.
+                  </li>
+                  <br>
+                  <li>
+                    We refine the task features using <b>Message Passing with task prototypes</b>.
+                  </li>
+                </ol>
+                
+              </p>
+            </div>
+          </div>
+            <div class="column is-half">
+              <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+                <img src="static/images/fusion.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+              </figure>
+            </div>
+        </div>
 
+    </div>
+  </div>
+</section>
 
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<section class="section hero" style="padding-bottom: .75rem; padding-top: 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-bottom: .75rem; padding-top: 1.5rem;">
+      <h3 class="title is-3">Experimental results</h3>
+      <p>We validate EgoPack on Action Recognition (AR), Object State Change Classification (OSCC), Point of No Return (PNR) and Long Term Anticipation (LTA) from Ego4D.</p>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/results_val.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+      </figure>
+      <div class="columns is-vcentered is-flex-center is-multiline">
+        <div class="column is-half">
+          <div class="text-block">
+            <h5 class="title is-5">Cross-tasks agreement ratio</h5>
+            <p>
+              How much different <i>perspectives</i> bring complementary information?
+            </p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+            <img src="static/images/viz_agreement.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+          </figure>
+        </div>
+        <div class="column is-half">
+          <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+            <img src="static/images/queries.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+          </figure>
+        </div>
+        <div class="column is-half">
+          <div class="text-block">
+            <h5 class="title is-5" style="text-align: right;">Queried prototypes</h5>
+            <p style="text-align: right;">
+              When the novel task is OSCC, what are the closest prototypes from the AR and PNR tasks?
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
 
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <h2 class="title">Cite us</h2>
+      <pre><code>
+@InProceedings{peirone2024backpack,
+  author    = {Peirone, Simone Alberto and Pistilli, Francesca and Alliegro, Antonio and Averta, Giuseppe},
+  title     = {A Backpack Full of Skills: Egocentric Video Understanding with Diverse Task Perspectives},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month     = {June},
+  year      = {2024},
+  pages     = {18275-18285}
+}
+      </code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
@@ -300,7 +371,7 @@
 
           <p>
             This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
 
