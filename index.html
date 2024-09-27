@@ -169,20 +169,16 @@
 <section class="section hero" style="padding-bottom: .75rem; padding-top: 1.5rem;">
   <div class="container is-max-desktop">
     <div class="hero-body" style="padding-bottom: .75rem; padding-top: 1.5rem;">
-      <h3 class="title is-3">What can we learn from a video?</h3>
+      <h3 class="title is-3">Can we plan and navigate without training and fine-tuning?</h3>
       <p>
-        Different egocentric video tasks can provide <b>different, and possibly complementary, perspectives</b> on what the user is doing. 
-        For example, learning to recognise human actions can give clues as to which objects are being manipulated or what will happen next.
+        <b>Select2Plan (S2P)</b> is a novel framework for high-level robot navigation that eliminates the need for extensive training or fine-tuning. The system leverages <b>off-the-shelf Vision-Language Models (VLMs)</b> combined with <b>Visual Question-Answering (VQA)</b> to make decisions without the need for specialized data collection.
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/what_can_we_learn.png" alt="" style="max-width: 768px; margin: auto;" />
       </figure>
-      <h4 class="title is-4">How can we learn from these perspectives?</h4>
+      <h4 class="title is-4">Can we adapt to different perspectives?</h4>
       <p>
-        Different approaches can be used to learn from these tasks. 
-        <b>Single task</b> models learn unique weights for each task. 
-        <b>Multi-task learning</b> shares a common backbone among the different tasks, with small task-specific heads on top. 
-        <b>Task translation</b> is a more recent approach that learns to translate the contributions of different task to solve one of them.
+        <b>>S2P</b> adapts effortlessy to different navigation scenarios, including <b>First-Person View (FPV)</b> and <b>Third-Person View (TPV)</b>. This versatility enables it to operate in various conditions, from autonomous vehicle pathfinding to CCTV-based robotic control.
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/related.png" alt="" style="max-width: 768px; margin: auto;" />
