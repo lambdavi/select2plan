@@ -180,9 +180,7 @@
       -->
       <h4 class="title is-4">Can we adapt to different perspectives?</h4>
       <p>
-        <b>>S2P</b> adapts effortlessy to different navigation scenarios, including <b>First-Person View (FPV)</b> and <b>Third-Person View (TPV)</b>. This versatility enables it to operate in various conditions, from autonomous vehicle pathfinding to CCTV-based robotic control.<br>
-        S2P incorporates In-Context Learning (ICL) combined with experiential memory to generate robust plans. The memory retrieval system enables the robot to learn from previous experiences and generalize to new, unseen environments, improving navigation performance by as much as 50% without the need for additional training.
-
+        <b>S2P</b> adapts effortlessy to different navigation scenarios, including <b>First-Person View (FPV)</b> and <b>Third-Person View (TPV)</b>. This versatility enables it to operate in various conditions, from autonomous vehicle pathfinding to CCTV-based robotic control.<br>
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/1st_frame_all.png" alt="" style="max-width: 1024px; margin: auto;" />
@@ -191,19 +189,24 @@
         <img src="static/images/3d_frame_all_i.png" alt="" style="max-width: 1024px; margin: auto;" />
       </figure>
       <p>
-        All these approaches have some limitations. 
-        For example, <b>multi-task learning</b> can share weights across different tasks, but it <b>does not explicitly model cross-task sinergies</b> and can lead to negative transfer between tasks.
-        <br>
-        Likewise, the <b>cross-task translation</b> mechanism proposed by EgoT2 combines perspectives from different tasks but it <b>needs to know all tasks before-hand</b> and requires separate models for each task.
+        S2P incorporates <b>In-Context Learning (ICL)</b> combined with <b>experiential memory</b> to generate robust plans.<br>
+        The memory retrieval system enables the robot to learn from previous experiences and generalize to new, unseen environments, improving navigation performance by as much as 50% without the need for additional training.
+        <b>S2P performs comparably</b> to heavily trained models in traditional setups (FPV), achieving impressive results with significantly fewer data points, making it an efficient solution for high-level robot planning and navigation.
       </p>
       <br>
-      <h4 class="title is-4">A new paradigm for Egocentric Video Understanding</h4>
+      <h4 class="title is-4">What matters in the context?</h4>
       <p>
-        We propose an approach for <b>egocentric video understanding</b> that focuses on <b>knowledge reuse</b> across different tasks. 
-        To do so, we adopt a graph-based shared model and the goal is to outperform single and multi-task baselines adapted to our scenario.
+        We also investigate how different data sources can affect the performance of S2P. In TPV scenario, we evaluate the performance of context coming from three different sources:
+        <br>
+        <ul>
+          <li>Same scenario, same rooms</li>
+          <li>Same scenario, different rooms</li>
+          <li>Same scenario, humans as demonstrator</li>
+          <li>Different scenario, different robotic support (online data)</li>
+        </ul>
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
-        <img src="static/images/paradigm.png" alt="" style="max-width: 768px; margin: auto;" />
+        <img src="static/images/context_v3.png" alt="" style="max-width: 768px; margin: auto;" />
       </figure>
     </div>
   </div>
