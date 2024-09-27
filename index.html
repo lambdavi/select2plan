@@ -196,14 +196,8 @@
       <br>
       <h4 class="title is-4">What matters in the context?</h4>
       <p>
-        We also investigate how different data sources can affect the performance of S2P. In TPV scenario, we evaluate the performance of context coming from three different sources:
-        <br>
-        <ul>
-          <li>Same scenario, same rooms</li>
-          <li>Same scenario, different rooms</li>
-          <li>Same scenario, humans as demonstrator</li>
-          <li>Different scenario, different robotic support (online data)</li>
-        </ul>
+        We also investigate how different data sources can affect the performance of S2P. In TPV scenario, we evaluate the performance of context coming from three different sources: same deployment scenario and same rooms, same scenario, different rooms
+        same scenario, humans as demonstrators and finally, different scenario and different robotic support (online data).
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/context_v3.png" alt="" style="max-width: 768px; margin: auto;" />
@@ -215,47 +209,25 @@
 <section class="section hero" style="padding-bottom: .75rem; padding-top: 1.5rem;">
   <div class="container is-max-desktop">
     <div class="hero-body" style="padding-bottom: .75rem; padding-top: 1.5rem;">
-      <h3 class="title is-3">Proposed Architecture</h3>
+      <h3 class="title is-3">Results in FPV scenario</h3>
       <p>
         Our approach is called <b>EgoPack</b> and is composed of two stages. 
         In the first stage, a multi-task model is trained on a set of K known tasks. 
         In the second stage, the model is fine-tuned on a novel task using egopack’s cross-task interaction mechanism
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
-        <img src="static/images/method.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+        <img src="static/images/table1.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
       </figure>
 
-      <h4 class="title is-4">Step 1: MTL Pre-training step</h4>
-      <div class="columns is-vcentered is-flex-center is-multiline">
-        <div class="column is-half">
-          <div class="text-block">
-            <p>
-              To share the same model across different tasks, we propose to <b>model video as graphs</b> whose nodes correspond to temporal segments of the video, 
-              edges connect temporally close nodes and egocentric video tasks can be represented as different graph operations
-            </p>
-          </div>
-        </div>
-        <div class="column is-half">
-          <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
-            <img src="static/images/temp.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
-          </figure>
-        </div>
-        <div class="column is-half">
-          <div class="text-block">
-            <p>
-              With this architecture, we can model <b>temporal reasoning</b> using a graph neural network 
-              that iteratively updates the nodes representations using <b>message passing</b>.
-              <br><br>
-              Finally, a set of <b>task-specific heads</b> project the nodes in the output space of each task.
-            </p>
-          </div>
-        </div>
-          <div class="column is-half">
-            <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
-              <img src="static/images/mtl.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
-            </figure>
-          </div>
-      </div>
+      <h3 class="title is-3">Results in TPV scenario</h3>
+      <p>
+        Our approach is called <b>EgoPack</b> and is composed of two stages. 
+        In the first stage, a multi-task model is trained on a set of K known tasks. 
+        In the second stage, the model is fine-tuned on a novel task using egopack’s cross-task interaction mechanism
+      </p>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/table1.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+      </figure>
 
 
       <h4 class="title is-4">Step 2: Novel Task Learning</h2>
