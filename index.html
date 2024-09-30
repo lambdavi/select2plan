@@ -212,9 +212,14 @@
     <div class="hero-body" style="padding-bottom: .75rem; padding-top: 1.5rem;">
       <h3 class="title is-3">Results in FPV scenario</h3>
       <p>
-        Our approach is called <b>EgoPack</b> and is composed of two stages. 
-        In the first stage, a multi-task model is trained on a set of K known tasks. 
-        In the second stage, the model is fine-tuned on a novel task using egopack’s cross-task interaction mechanism
+        In the FPV setup, our model, referred to as Select2Plan (S2P), was evaluated against
+        state-of-the-art methods in a variety of scenarios. The average Success Rate (SR) of
+        46.16% in known scenes with known objects reflects the model's ability to perform well
+        even with a minimal training dataset. Compared to the best-performing model, which
+        was trained on 8 million episodes, S2P required only a fraction of the data, specifically
+        one episode per object type (total of 15). Despite this, S2P managed to achieve comparable results,
+        highlighting the efficiency of our approach in leveraging pre-trained Vision-Language
+        Models (VLMs) for efficient knowledge transfer
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/table1.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
@@ -222,9 +227,15 @@
 
       <h3 class="title is-3">Results in TPV scenario</h3>
       <p>
-        Our approach is called <b>EgoPack</b> and is composed of two stages. 
-        In the first stage, a multi-task model is trained on a set of K known tasks. 
-        In the second stage, the model is fine-tuned on a novel task using egopack’s cross-task interaction mechanism
+      Our In-Context Learning (ICL) approach demonstrated
+      significant improvements in the TPV scenario. The highest Trajectory Score (TS) achieved
+      was 270.70 in context scenario A, which allows unrestricted retrieval from the database,
+      compared to the baseline zero-shot approach, which scored 147.82. This represents a
+      54.6% improvement, indicating that our model can effectively leverage contextual information to enhance navigational accuracy and safety.
+      In addition to the overall TS improvement, the framework showed a remarkable 38%
+      reduction in selecting dangerous points (DS), which indicates locations with a high risk of collision. This reduction is crucial for real-world applications, where safety and reliable navigation are paramount. Such performance gains were consistent across different
+      context scenarios, further highlighting the versatility and adaptability of the proposed ap-
+      proach.
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/table2.png" alt="" style="max-width: 420px; margin: auto; margin-bottom: 16px;" />
