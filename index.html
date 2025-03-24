@@ -136,13 +136,16 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/video.mp4"
-        type="video/mp4">
-      </video>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/new_teaser.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
+      </figure>
       <h2 class="subtitle has-text-centered">
-        High-level demonstration of S2P:the robot must reach the red mark from its location, controlled solely via the external camera, shown in the figure. S2P proposes candidate keypoints -- in yellow -- and draws them into the original image before requesting a feasible trajectory to an off-the-shelf VLM. The latter will output a trajectory -- green -- as a sequence of keypoints, ideally yielding a trajectory that avoids obstacles -- e.g. 3 and 9.
+        We propose the Select2Plan framework, a training-free approach that can be applied in either Third-Person View
+        (TPV) or First Person View (FPV) scenarios. It leverages Memory Banks, which are separate for TPV (from in-domain,
+        online videos, and human demonstrations) and for FPV (various simulated environments and target objects), to retrieve
+        relevant annotated samples. Given a current observation, Select2Plan generates plans (in form of text), which are then
+        mapped to actions and used directly for execution. The framework focus is to meet any user's need while mantaining high
+        performance and generalization ability.
       </h2>
     </div>
   </div>
