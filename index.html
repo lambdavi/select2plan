@@ -71,7 +71,7 @@
                 </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Politecnico di Torino <sup>1</sup>, University of Oxford <sup>2</sup><br> <strong style="color: #3273dc;">Accepted at IEEE RA-L</strong></span>
+                    <span class="author-block">Politecnico di Torino <sup>1</sup>, University of Oxford <sup>2</sup><br> <strong style="color: #e09018;">Accepted at IEEE RA-L</strong></span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author: davide.buoso@polito.it</small></span>
                     <span class="eql-cntrb"><small><br><sup>†</sup>Indicates Equal Supervision</small></span>
                   </div>
@@ -101,9 +101,7 @@
                   </span>
                   -->
 
-                  
                 
-              
               <!-- ArXiv abstract Link  -->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/2411.04006" target="_blank"
@@ -112,19 +110,20 @@
                     <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
-                
-                  <!-- Github link-->
-                  <span class="link-block">
-                    <a href="#" 
-                    class="external-link button is-normal is-rounded is-dark" style="opacity: 0.6; cursor: not-allowed; pointer-events: none;">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code (Coming Soon)</span>
-                  </a>
-                </span>
                 </a>
               </span>
+
+              <!-- Github link-->
+              <span class="link-block">
+                <a href="#" 
+                class="external-link button is-normal is-rounded is-dark" style="opacity: 0.6; cursor: not-allowed; pointer-events: none;">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code (Coming Soon)</span>
+              </a>
+              </span>
+
             </div>
           </div>
         </div>
@@ -161,7 +160,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            This study explores the potential of off-the-shelf Vision-Language Models (VLMs) for high-level robot planning in the context of autonomous navigation. Indeed, while most of existing learning-based approaches for path planning require extensive task-specific training/fine-tuning, we demonstrate how such training can be avoided for most practical cases. To do this, we introduce Select2Plan (S2P), a novel training-free frame work for high-level robot planning which completely eliminates the need for fine-tuning or specialised training. By leveraging structured Visual Question-Answering (VQA) and In-Context Learning (ICL), our approach drastically reduces the need for data collection, requiring a fraction of the task-specific data typically used by trained models, or even relying only on online data. Our method facilitates the effective use of a generally trained VLM in a flexible and cost-efficient way, and does not require additional sensing except for a simple monocular camera. We demonstrate its adaptability across various scene types, context sources, and sensing setups. We evaluate our approach in two distinct scenarios: traditional First-Person View (FPV) and infrastructure-driven Third-Person View (TPV) navigation, demonstrating the flexibility and simplicity of our method. Our technique significantly enhances the navigational capabilities of a baseline VLM of approximately 50% in TPV scenario, and is comparable to trained models in the FPV one, with as few as 20 demonstrations.
+            We introduce <b>Select2Plan (S2P)</b>, a novel training-free framework for high-level robot planning that leverages off-the-shelf VLMs for autonomous navigation. Unlike most learning-based approaches that require extensive task-specific training and large-scale data collection, S2P overcomes the need for fine-tuning by adapting inputs to align with the VLM's pretraining data. Our method achieves this through a combination of structured Visual Question Answering (VQA) to ground action selection on the image, and In-Context Learning (ICL) to exploit knowledge drawn from relevant examples from a memory bank of (visually) annotated data, which can include diverse, in-the-wild sources. We demonstrate S2P flexibility by evaluating it in both First-Person View (FPV) and Third-Person View (TPV) navigation. S2P improves the performance of a baseline VLM by 40% in TPV and surpasses end-to-end trained models by approximately 24% in FPV when tasked with navigating towards unseen objects in novel scenes. These results highlight the adaptability, simplicity, and effectiveness of our training-free approach, demonstrating that the use of pre-trained VLMs with structured memory retrieval enables robust high-level robot planning without costly task-specific training. Our experiments also show that retrieving samples from heterogeneous data sources, including online videos of different robots or humans walking, is highly beneficial for navigation. Notably, our method effectively generalizes to novel scenarios, requiring only a handful of demonstrations.
           </p>
         </div>
       </div>
@@ -174,9 +173,9 @@
 <section class="section hero" style="padding-bottom: .75rem; padding-top: 1.5rem;">
   <div class="container is-max-desktop">
     <div class="hero-body" style="padding-bottom: .75rem; padding-top: 1.5rem;">
-      <h3 class="title is-3">Can we plan and navigate in a training-free matter leveraging VQA and ICL?</h3>
+      <h3 class="title is-3">What's the secret behind navigating in a training-free manner?</h3>
       <p>
-        <b>Select2Plan (S2P)</b> is a novel framework for high-level robot navigation that eliminates the need for extensive training or fine-tuning. The system leverages <b>off-the-shelf Vision-Language Models (VLMs)</b> combined with <b>Visual Question-Answering (VQA)</b> to make decisions without the need for specialized data collection.
+        <b>Select2Plan (S2P)</b> is a novel framework for high-level robot navigation that eliminates the need for extensive training or fine-tuning. In order to to that, the system leverages <b>off-the-shelf Vision-Language Models (VLMs)</b> combined with <b>Visual Question-Answering (VQA)</b> to make decisions without the need for specialized data collection. The secret is riformulating the problem in a way that is compatible with the VLM's pretraining data.
       </p>
       <!--
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
@@ -195,7 +194,7 @@
       <p>
         S2P incorporates <b>In-Context Learning (ICL)</b> combined with <b>experiential memory</b> to generate robust plans.<br>
         The memory retrieval system enables the robot to learn from previous experiences and generalize to new, unseen environments, improving navigation performance by as much as 50% without the need for additional training.
-        <b>S2P performs comparably</b> to heavily trained models in traditional setups (FPV), achieving impressive results with significantly fewer data points, making it an efficient solution for high-level robot planning and navigation.
+        <b>S2P even outperforms</b> heavily trained models in FPV setup, achieving impressive results (+24%) with significantly fewer data, making it an efficient solution for high-level robot planning and navigation. Record some demos and you are ready to go!
       </p>
       <br>
       <h4 class="title is-4">What matters in the context?</h4>
@@ -220,9 +219,9 @@
         46.16% in known scenes with known objects reflects the model's ability to perform well
         even with a minimal training dataset. Compared to the best-performing model, which
         was trained on 8 million episodes, S2P required only a fraction of the data, specifically
-        one episode per object type (total of 15). Despite this, S2P managed to achieve comparable results,
+        one episode per object type (total of 15). Despite this, S2P managed to achieve great improvements (up to +24%),
         highlighting the efficiency of our approach in leveraging pre-trained Vision-Language
-        Models (VLMs) for efficient knowledge transfer
+        Models (VLMs) for efficient knowledge transfer.
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/table1.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
@@ -238,7 +237,7 @@
       In addition to the overall TS improvement, the framework showed a remarkable 38%
       reduction in selecting dangerous points (DS), which indicates locations with a high risk of collision. This reduction is crucial for real-world applications, where safety and reliable navigation are paramount. Such performance gains were consistent across different
       context scenarios, further highlighting the versatility and adaptability of the proposed ap-
-      proach.
+      proach. WHat is really interesting is the ability to generalize cross embodiement using as instance demos of other robots or humans walking.
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/table2.png" alt="" style="max-width: 420px; margin: auto; margin-bottom: 16px;" />
