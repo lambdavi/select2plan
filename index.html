@@ -197,14 +197,7 @@
         <b>S2P even outperforms</b> heavily trained models in FPV setup, achieving impressive results (+24%) with significantly fewer data, making it an efficient solution for high-level robot planning and navigation. Record some demos and you are ready to go!
       </p>
       <br>
-      <h4 class="title is-4">What matters in the context?</h4>
-      <p>
-        We also investigate how different data sources can affect the performance of S2P. In TPV scenario, we evaluate the performance of context coming from three different sources: same deployment scenario and same rooms, same scenario, different rooms
-        same scenario, humans as demonstrators and finally, different scenario and different robotic support (online data).
-      </p>
-      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
-        <img src="static/images/context_v3.png" alt="" style="max-width: 768px; margin: auto;" />
-      </figure>
+      
     </div>
   </div>
 </section>
@@ -226,7 +219,14 @@
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/table1.png" alt="" style="max-width: 768px; margin: auto; margin-bottom: 16px;" />
       </figure>
-
+      <h4 class="title is-4">What matters in the context?</h4>
+      <p>
+        We also investigate how different data sources can affect the performance of S2P. In TPV scenario, we evaluate the performance of context coming from three different sources: same deployment scenario and same rooms, same scenario, different rooms
+        same scenario, humans as demonstrators and finally, different scenario and different robotic support (online data).
+      </p>
+      <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
+        <img src="static/images/context_v3.png" alt="" style="max-width: 768px; margin: auto;" />
+      </figure>
       <h3 class="title is-3">Results in TPV scenario</h3>
       <p>
       Our In-Context Learning (ICL) approach demonstrated
@@ -236,8 +236,7 @@
       54.6% improvement, indicating that our model can effectively leverage contextual information to enhance navigational accuracy and safety.
       In addition to the overall TS improvement, the framework showed a remarkable 38%
       reduction in selecting dangerous points (DS), which indicates locations with a high risk of collision. This reduction is crucial for real-world applications, where safety and reliable navigation are paramount. Such performance gains were consistent across different
-      context scenarios, further highlighting the versatility and adaptability of the proposed ap-
-      proach. WHat is really interesting is the ability to generalize cross embodiement using as instance demos of other robots or humans walking.
+      context scenarios, further highlighting the versatility and adaptability of the proposed approach. WHat is really interesting is the ability to generalize cross embodiement using as instance demos of other robots or humans walking.
       </p>
       <figure class="image" style="margin-top: 32px; margin-bottom: 32px;">
         <img src="static/images/table2.png" alt="" style="max-width: 420px; margin: auto; margin-bottom: 16px;" />
